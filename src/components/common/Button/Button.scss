@@ -1,0 +1,74 @@
+.customButton {
+  font-size: 1.15rem;
+  font-weight: 500;
+  padding: 7.5px 25px;
+  border: none;
+  border-radius: 0.4rem;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 200ms ease;
+
+  &.mainButton {
+    background-color: white;
+    color: black;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+
+    &:hover {
+      background-color: rgb(232, 232, 232);
+    }
+  }
+
+  &.secondaryButton {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+.customCircleButton {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.1s linear;
+
+  &.circleMainButton {
+    background-color: white;
+
+    & > * {
+		font-size: 1.4rem;
+    }
+
+	&:hover {
+		background-color: rgb(255, 255, 255, .8);
+	}
+  }
+
+  &.circleSecondaryButton {
+	background-color: transparent;
+	border: 2px solid rgb(173, 172, 172);
+	transition: border-color 0.1s linear;
+
+	& > * {
+		font-size: 1.3rem;
+		color: rgb(173, 172, 172);
+		transition: color 0.2s linear;
+	}
+
+	&:hover {
+		border-color: white;
+
+		& > * {
+			color: white;
+		}
+	}
+  }
+}
