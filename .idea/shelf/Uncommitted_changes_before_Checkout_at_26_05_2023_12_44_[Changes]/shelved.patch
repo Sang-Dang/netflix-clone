@@ -1,0 +1,113 @@
+Index: src/index.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React from \"react\";\r\nimport ReactDOM from \"react-dom/client\";\r\nimport \"./index.css\";\r\nimport App from \"./containers/App/App\";\r\nimport { BrowserRouter } from \"react-router-dom\";\r\n\r\nconst root = ReactDOM.createRoot(\r\n  document.getElementById(\"root\") as HTMLElement\r\n);\r\nroot.render(\r\n  <React.StrictMode>\r\n    <BrowserRouter>\r\n      <App />\r\n    </BrowserRouter>\r\n  </React.StrictMode>\r\n);\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/index.tsx b/src/index.tsx
+--- a/src/index.tsx	
++++ b/src/index.tsx	
+@@ -1,7 +1,7 @@
+ import React from "react";
+ import ReactDOM from "react-dom/client";
+ import "./index.css";
+-import App from "./containers/App/App";
++import App from "./App";
+ import { BrowserRouter } from "react-router-dom";
+ 
+ const root = ReactDOM.createRoot(
+Index: src/components/layout/Header/Header.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React, { useEffect, useState } from \"react\";\r\nimport { FontAwesomeIcon } from '@fortawesome/react-fontawesome'\r\nimport { faSearch, faBell } from '@fortawesome/free-solid-svg-icons'\r\nimport \"./header.css\";\r\n\r\ninterface props {\r\n  title: string;\r\n  link: string[];\r\n}\r\nconst Header: React.FC<props> = ({ title, link }) => {\r\n\r\n  const [isScrolled, setIsScrolled] = useState(false);\r\n\r\n  useEffect(() => {\r\n    const handleScroll = () => {\r\n      const position = window.scrollY;\r\n      console.log(position)\r\n      if(position > 0) {\r\n        setIsScrolled(true);\r\n      } else {\r\n        setTimeout(() => setIsScrolled(false), 250);\r\n      }\r\n    }\r\n\r\n    window.addEventListener('scroll', handleScroll);\r\n\r\n    return () => {\r\n      window.removeEventListener('scroll', handleScroll);\r\n    }\r\n  }, []) \r\n\r\n  const linkFormatted = link.map((item) => {\r\n    return <li key={item}>{item}</li>;\r\n  });\r\n\r\n  return (\r\n    <section id=\"header\" className={isScrolled ? 'opaque' : ''}>\r\n      <div className=\"main\">\r\n        <h1 className=\"title\">{title}</h1>\r\n        <ul className=\"links\">{linkFormatted}</ul>\r\n      </div>\r\n      <div className=\"functions\">\r\n        <div className=\"search\">\r\n            <FontAwesomeIcon icon={faSearch}/>\r\n        </div>\r\n        <div className=\"notifications\">\r\n            <FontAwesomeIcon icon={faBell} />\r\n        </div>\r\n        <div className=\"account\"></div>\r\n      </div>\r\n    </section>\r\n  );\r\n};\r\n\r\nexport default Header;\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/components/layout/Header/Header.tsx b/src/components/layout/Header/Header.tsx
+--- a/src/components/layout/Header/Header.tsx	
++++ b/src/components/layout/Header/Header.tsx	
+@@ -1,6 +1,7 @@
+ import React, { useEffect, useState } from "react";
+-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+-import { faSearch, faBell } from '@fortawesome/free-solid-svg-icons'
++import { Outlet } from "react-router-dom";
++import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
++import { faSearch, faBell } from "@fortawesome/free-solid-svg-icons";
+ import "./header.css";
+ 
+ interface props {
+@@ -8,47 +9,49 @@
+   link: string[];
+ }
+ const Header: React.FC<props> = ({ title, link }) => {
+-
+   const [isScrolled, setIsScrolled] = useState(false);
+ 
+   useEffect(() => {
+     const handleScroll = () => {
+       const position = window.scrollY;
+-      console.log(position)
+-      if(position > 0) {
++      console.log(position);
++      if (position > 0) {
+         setIsScrolled(true);
+       } else {
+         setTimeout(() => setIsScrolled(false), 250);
+       }
+-    }
++    };
+ 
+-    window.addEventListener('scroll', handleScroll);
++    window.addEventListener("scroll", handleScroll);
+ 
+     return () => {
+-      window.removeEventListener('scroll', handleScroll);
+-    }
+-  }, []) 
++      window.removeEventListener("scroll", handleScroll);
++    };
++  }, []);
+ 
+   const linkFormatted = link.map((item) => {
+     return <li key={item}>{item}</li>;
+   });
+ 
+   return (
+-    <section id="header" className={isScrolled ? 'opaque' : ''}>
+-      <div className="main">
+-        <h1 className="title">{title}</h1>
+-        <ul className="links">{linkFormatted}</ul>
+-      </div>
+-      <div className="functions">
+-        <div className="search">
+-            <FontAwesomeIcon icon={faSearch}/>
+-        </div>
+-        <div className="notifications">
++    <>
++      <section id="header" className={isScrolled ? "opaque" : ""}>
++        <div className="main">
++          <h1 className="title">{title}</h1>
++          <ul className="links">{linkFormatted}</ul>
++        </div>
++        <div className="functions">
++          <div className="search">
++            <FontAwesomeIcon icon={faSearch} />
++          </div>
++          <div className="notifications">
+             <FontAwesomeIcon icon={faBell} />
+-        </div>
+-        <div className="account"></div>
+-      </div>
+-    </section>
++          </div>
++          <div className="account"></div>
++        </div>
++        <Outlet />
++      </section>
++    </>
+   );
+ };
+ 
+diff --git a/src/containers/App/App.scss b/src/containers/App/App.scss
+deleted file mode 100644

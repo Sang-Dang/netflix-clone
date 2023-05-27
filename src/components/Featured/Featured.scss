@@ -1,10 +1,10 @@
 .featured {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
+
   .image-container {
-    filter: brightness(70%);
     height: 100vh;
+    user-select: none;
 
     img {
       width: 100vw;
@@ -13,10 +13,10 @@
 
     &::before {
       content: "";
-      background-image: linear-gradient(
-        to top,
-        rgba(20, 20, 20, 255),
-        rgba(0, 0, 0, 0)
+      background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 1) 80%
       );
       position: absolute;
       height: 500px;
@@ -45,5 +45,23 @@
       display: flex;
       gap: 0.75rem;
     }
+  }
+}
+
+.featured.dark {
+  .image-container::before {
+    background: rgb(255, 255, 255);
+
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.536) 30%,
+      rgb(255, 255, 255) 80%
+    );
+  }
+
+  .caption {
+    color: black;
+    font-weight: 500;
   }
 }

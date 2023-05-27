@@ -6,9 +6,12 @@
   position: relative;
 
   .imageContainer img {
+    height: 170px;
+    width: 100%;
     border-radius: 0.3rem;
     position: relative;
-    z-index: 51
+    z-index: 51;
+    object-fit: cover;
   }
 
   .info {
@@ -27,12 +30,16 @@
     .functions {
       display: flex;
       gap: 0.5rem;
+
+      >*:nth-child(4) {
+        margin-left: auto;
+      }
     }
 
     .title {
       margin-top: 10px;
-      font-weight: 400;
-      font-size: 1.1rem;
+      font-weight: 700;
+      font-size: 1.2rem;
     }
   }
 
@@ -56,3 +63,13 @@
     }
   }
 } 
+
+.filmCard.dark {
+  .info {
+    background-color: white;
+    .title {
+      color: black;
+
+    }
+  }
+}

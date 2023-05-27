@@ -1,14 +1,18 @@
-.filmContainer {
+.filmList {
   position: relative;
   top: 86.5vh;
   padding: 0 75px;
 }
-.filmContainer .title {
+.filmList .title {
   color: white;
   margin-bottom: 10px;
 }
-.filmContainer .films {
+.filmList .films {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 1.5rem;
-}/*# sourceMappingURL=FilmContainer.css.map */
+  gap: 1rem;
+}
+
+.filmList.dark > .title {
+  color: black;
+}/*# sourceMappingURL=FilmList.css.map */

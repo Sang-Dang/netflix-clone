@@ -8,7 +8,10 @@
   gap: 0.75rem;
   align-items: center;
   cursor: pointer;
-  transition: background-color 200ms ease;
+  transition: background-color 200ms ease, transform 200ms ease;
+}
+.customButton:active {
+  transform: scale(0.9);
 }
 .customButton.mainButton {
   background-color: white;
@@ -34,7 +37,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.1s linear;
+  transition: background-color 0.1s linear, transform 0.1s linear;
+}
+.customCircleButton:active {
+  transform: scale(0.9);
 }
 .customCircleButton.circleMainButton {
   background-color: white;
@@ -44,6 +50,15 @@
 }
 .customCircleButton.circleMainButton:hover {
   background-color: rgba(255, 255, 255, 0.8);
+}
+.customCircleButton.circleMainButton.dark {
+  background-color: black;
+}
+.customCircleButton.circleMainButton.dark > * {
+  color: white;
+}
+.customCircleButton.circleMainButton.dark:hover {
+  background-color: rgba(0, 0, 0, 0.5);
 }
 .customCircleButton.circleSecondaryButton {
   background-color: transparent;
@@ -60,4 +75,16 @@
 }
 .customCircleButton.circleSecondaryButton:hover > * {
   color: white;
+}
+.customCircleButton.circleSecondaryButton.dark {
+  border-color: rgb(51, 51, 51);
+}
+.customCircleButton.circleSecondaryButton.dark > * {
+  color: rgb(51, 51, 51);
+}
+.customCircleButton.circleSecondaryButton.dark:hover {
+  border-color: rgb(173, 172, 172);
+}
+.customCircleButton.circleSecondaryButton.dark:hover > * {
+  color: rgb(173, 172, 172);
 }/*# sourceMappingURL=Button.css.map */

@@ -1,0 +1,59 @@
+.popup {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  transition: all 200ms linear;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.popup .overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  inset: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 1000;
+  border-radius: 0;
+}
+.popup .main {
+  width: 600px;
+  height: auto;
+  max-height: 80vh;
+  background-color: black;
+  position: relative;
+  overflow: auto;
+  transform: scaleY(0);
+  transform-style: flat;
+  transition: all 200ms ease-in-out;
+  z-index: 1100;
+}
+.popup .main .close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  color: white;
+  z-index: 1100;
+  font-size: 1.5rem;
+  transition: all 0.2s linear;
+}
+.popup .main .close:hover {
+  opacity: 0.5;
+}
+.popup.open {
+  visibility: visible;
+  opacity: 1;
+}
+.popup.open .main {
+  transform: scaleY(1);
+}
+
+.popup.dark .main {
+  background-color: white;
+}
+.popup.dark .main .close {
+  color: black;
+}/*# sourceMappingURL=Popup.css.map */

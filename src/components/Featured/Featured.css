@@ -1,11 +1,12 @@
 .featured {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
 }
 .featured .image-container {
-  filter: brightness(70%);
   height: 100vh;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 .featured .image-container img {
   width: 100vw;
@@ -13,7 +14,7 @@
 }
 .featured .image-container::before {
   content: "";
-  background-image: linear-gradient(to top, rgb(20, 20, 20), rgba(0, 0, 0, 0));
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 80%);
   position: absolute;
   height: 500px;
   right: 0;
@@ -36,4 +37,13 @@
 .featured .caption .functions {
   display: flex;
   gap: 0.75rem;
+}
+
+.featured.dark .image-container::before {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.536) 30%, rgb(255, 255, 255) 80%);
+}
+.featured.dark .caption {
+  color: black;
+  font-weight: 500;
 }/*# sourceMappingURL=Featured.css.map */

@@ -6,9 +6,13 @@
   position: relative;
 }
 .filmCard .imageContainer img {
+  height: 170px;
+  width: 100%;
   border-radius: 0.3rem;
   position: relative;
   z-index: 51;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .filmCard .info {
   visibility: hidden;
@@ -27,10 +31,13 @@
   display: flex;
   gap: 0.5rem;
 }
+.filmCard .info .functions > *:nth-child(4) {
+  margin-left: auto;
+}
 .filmCard .info .title {
   margin-top: 10px;
-  font-weight: 400;
-  font-size: 1.1rem;
+  font-weight: 700;
+  font-size: 1.2rem;
 }
 .filmCard:hover {
   transform: scale(1.1) translateY(-30%);
@@ -46,4 +53,11 @@
   opacity: 1;
   display: block;
   box-shadow: 0 0 10px 0 rgb(57, 57, 57);
+}
+
+.filmCard.dark .info {
+  background-color: white;
+}
+.filmCard.dark .info .title {
+  color: black;
 }/*# sourceMappingURL=FilmCard.css.map */

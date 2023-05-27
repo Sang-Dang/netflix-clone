@@ -10,7 +10,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  transition: background-color 0.25s ease-in-out;
+  transition: all 0.2s linear;
   z-index: 10;
   width: 100%;
 }
@@ -67,4 +67,34 @@
 }
 #header .functions > * {
   cursor: pointer;
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+}
+#header .functions .switch-theme {
+  transition: transform 0.1s linear;
+}
+#header .functions .switch-theme:hover {
+  transform: rotate(180deg) scale(150%);
+}
+#header .functions .switch-theme:active {
+  transform: rotate(180deg) scale(125%);
+}
+#header.dark {
+  background: rgb(0, 0, 0);
+  background: linear-gradient(0deg, transparent 0%, rgba(255, 255, 255, 0.547) 50%, rgb(255, 255, 255) 100%);
+  color: black;
+}
+#header.dark .main .links > li {
+  font-weight: 600;
+}
+#header.dark .main .links > li::after {
+  background-color: black;
+}
+#header.dark.opaque {
+  background-color: white;
+}
+#header.dark .functions .button {
+  color: black;
 }/*# sourceMappingURL=Header.css.map */

@@ -1,22 +1,30 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   CircleMainButton,
   CircleSecondaryButton,
 } from "../common/Button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay, faPlus, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPlay,
+  faPlus,
+  faThumbsUp,
+  faChevronUp,
+} from "@fortawesome/free-solid-svg-icons";
 import "./FilmCard.css";
+import { ThemeContext } from "../../util/ThemeContext";
+import { getOpenHandler } from "../FilmInfoPopup/FilmInfoPopup";
 
 interface props {
-  imageURL: string;
-  title: string;
+  movie: any;
+  infoHandler: Function;
 }
 
-const FilmCard: React.FC<props> = ({ imageURL, title }) => {
+const FilmCard: React.FC<props> = ({ movie, infoHandler }) => {
   const [isHovered, setIsHovered] = useState(false);
-  
+  const { isDark } = useContext(ThemeContext);
+
   function handleMouseEnter() {
-    setTimeout(() => setIsHovered(true), 300)
+    setTimeout(() => setIsHovered(true), 300);
     setIsHovered(true);
   }
   function handleMouseLeave() {
@@ -25,14 +33,21 @@ const FilmCard: React.FC<props> = ({ imageURL, title }) => {
     }, 800);
   }
 
+  function handleShowInfo() {
+    getOpenHandler("info")
+    infoHandler(movie)
+  }
+
   return (
     <div
-      className={isHovered ? "filmCard hovered" : "filmCard"}
+      className={
+        "filmCard " + (isHovered ? "hovered " : " ") + (isDark ? "dark " : " ")
+      }
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       <div className="imageContainer">
-        <img src={imageURL} alt={title} />
+        <img src={movie.img} alt={movie.title} />
       </div>
       <div className="info">
         <div className="functions">
@@ -48,8 +63,12 @@ const FilmCard: React.FC<props> = ({ imageURL, title }) => {
             handler={() => alert("HECLLO")}
             icon={<FontAwesomeIcon icon={faThumbsUp} />}
           />
+          <CircleSecondaryButton
+            handler={handleShowInfo}
+            icon={<FontAwesomeIcon icon={faChevronUp} />}
+          />
         </div>
-        <h3 className="title">{title}</h3>
+        <h3 className="title">{movie.title}</h3>
       </div>
     </div>
   );

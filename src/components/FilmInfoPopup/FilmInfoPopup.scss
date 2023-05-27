@@ -1,0 +1,44 @@
+.popup > * {
+  border-radius: 1rem;
+  padding: 2rem;
+  color: white;
+  overflow-y: visible;
+
+  .banner {
+    object-fit: cover;
+    border-radius: 1rem;
+    margin-bottom: 30px;
+    height: 300px;
+    width: 100%;
+  }
+
+  .title {
+    font-size: 2rem;
+    font-weight: 900;
+    display: inline;
+  }
+
+  .release {
+    display: inline;
+    padding-left: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+
+    &::before {
+      content: "(";
+    }
+
+    &::after {
+      content: ")";
+    }
+  }
+
+  .functions {
+    display: flex;
+    gap: 0.5rem;
+  }
+}
+
+.popup.dark > * {
+  color: black;
+}
